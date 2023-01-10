@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Ghost {
   String myName;
@@ -13,42 +12,7 @@ public class Ghost {
   }
 
   public ArrayList<Location> get_valid_moves() {
-
-    //We just don't want to move through other walls
-
-    ArrayList<Location> possibleMoves = new ArrayList<Location>(); // Return object
-
-    HashSet<Map.Type> currType = new HashSet<Map.Type>();
-
-    currType = this.myMap.getLoc(new Location(this.myLoc.x, this.myLoc.y + 1)); //Up one
-
-    if (!(currType == null || (currType.contains(Map.Type.WALL)))) {
-
-      possibleMoves.add(new Location(this.myLoc.x, this.myLoc.y + 1));
-    } 
-    
-    currType = this.myMap.getLoc(new Location(this.myLoc.x, this.myLoc.y - 1)); //Down one
-
-    if (!(currType == null || (currType.contains(Map.Type.WALL)))) {
-
-      possibleMoves.add(new Location(this.myLoc.x, this.myLoc.y - 1));
-    } 
-
-    currType = this.myMap.getLoc(new Location(this.myLoc.x + 1, this.myLoc.y)); //Right one
-
-    if (!(currType == null || (currType.contains(Map.Type.WALL)))) {
-
-      possibleMoves.add(new Location(this.myLoc.x + 1, this.myLoc.y));
-    } 
-
-    currType = this.myMap.getLoc(new Location(this.myLoc.x - 1, this.myLoc.y)); //Left one
-
-    if (!(currType == null || (currType.contains(Map.Type.WALL)))) {
-
-      possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
-    } 
-
-    return possibleMoves;
+    return null;
   }
 
   public boolean move() {
