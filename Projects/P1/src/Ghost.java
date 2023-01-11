@@ -16,7 +16,7 @@ public class Ghost {
   }
 
   public boolean move() {
-    return false;
+      return false;
   }
 
   public boolean is_pacman_in_range() {
