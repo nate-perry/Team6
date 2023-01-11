@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
+import java.util.ArrayList;
 
 public class Map {
 
@@ -20,6 +21,8 @@ public class Map {
   private HashMap<String, JComponent> components;
   private HashSet<Type> emptySet;
   private HashSet<Type> wallSet;
+  private HashMap<String, PacMan> pacmans;
+  private HashMap<String, Ghost> ghosts;
 
   private int cookies = 0;
 
@@ -28,6 +31,8 @@ public class Map {
     locations = new HashMap<String, Location>();
     components = new HashMap<String, JComponent>();
     field = new HashMap<Location, HashSet<Type>>();
+    pacmans = new HashMap<String, PacMan>();
+    ghosts = new HashMap<String, Ghost>();
 
     emptySet = new HashSet<Type>();
     wallSet = new HashSet<Type>();
@@ -54,7 +59,60 @@ public class Map {
   public boolean move(String name, Location loc, Type type) {
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
-    return false;
+
+    //Given a name, location, and type, move the object and update
+
+    JComponent component = this.components.get(name); //Simply a JComponent
+
+    ArrayList<Location> valid_locations;
+
+    //If we have a pacman, then I need a pacman
+
+    if (type == Type.PACMAN) {
+      PacMan current_pacman = this.pacmans.get(name);
+
+      if (current_pacman == null) {
+        PacMan man = new PacMan(name, loc, this);
+
+        this.pacmans.put(name, man);
+
+        current_pacman = man;
+      }
+
+      valid_locations = current_pacman.get_valid_moves();
+
+      if (valid_locations.isEmpty()) {
+        return false;
+      } else {
+        if (component != null) {
+          component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
+        }
+        return true;
+      }
+    } else if (type == Type.GHOST){
+      Ghost current_ghost = this.ghosts.get(name);
+
+      if (current_ghost == null) {
+        Ghost ghost = new Ghost(name, loc, this);
+
+        this.ghosts.put(name, ghost);
+
+        current_ghost = ghost;
+      }
+
+      valid_locations = current_ghost.get_valid_moves();
+
+      if (valid_locations.isEmpty()) {
+        return false;
+      } else {
+        if (component != null) {
+          component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
+        }
+        return true;
+      }
+    } else {
+      return false;
+    }
   }
 
   public HashSet<Type> getLoc(Location loc) {
