@@ -72,6 +72,12 @@ public class PacMan {
   }
 
   public JComponent consume() {
+    currType = this.myMap.getLoc(this.myLoc);
+
+    if currType.contains(Map.Type.COOKIE) {
+      return this.myMap.eatCookie();
+    }
     return null;
   }
+
 }
