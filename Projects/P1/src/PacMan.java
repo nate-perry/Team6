@@ -68,10 +68,28 @@ public class PacMan {
   }
 
   public boolean is_ghost_in_range() {
-    return false;
-  }
+    ArrayList<Location> places = new ArrayList<Location>();
+    
+    places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0)); 
+    places.add(new Location(this.myLoc.x - 1, this.myLoc.y - 0));
+    places.add(new Location(this.myLoc.x + 0, this.myLoc.y + 1));
+    places.add(new Location(this.myLoc.x - 0, this.myLoc.y - 1));
 
+    for (Location location:places) {
+       HashSet<Map.Type> checker = myMap.getLoc(location);
+       if (checker.contains(Map.Type.GHOST)) {
+	return true;
+       }
+    }
+   return false; 
+  }
   public JComponent consume() {
+    HashSet<Map.Type> currType = new HashSet<Map.Type>()
+    currType = this.myMap.getLoc(this.myLoc);
+    if currType.contains(Map.Type.COOKIE) {
+      return this.myMap.eatCookie();
+    }
     return null;
   }
+
 }
