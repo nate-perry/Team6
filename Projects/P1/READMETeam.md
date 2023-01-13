@@ -30,6 +30,8 @@ Function consume(): This function will remove/consume a cookie component if it i
 
 Test: To test this we created a map which had pacman and a cookie at the same location. The test will assert that the cookie component was returned.
 
+Function is_ghost_in_range(): This functions checks if a ghost is in the range of 1 block in any of the 4 directions around Pacman.
+
 ## Ghost
 
 Function: get_valid_moves(): This function returns an array list with the valid coordinates that a given pacman can move. We decided to move a ghost if the spaces available aren't walls. If a space includes a wall it is not included in the list of available coordinates. 
