@@ -1,0 +1,16 @@
+name: PacManWorkflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile codebase
+        run: javac -cp "src/" src/*.java
