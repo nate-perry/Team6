@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Compile codebase
-        run: javac -cp "Projects/P1/src/" src/*.java
+        run: javac -cp "src/" Projects/P1/src/*.java
         
   testPvalidMoves:
     runs-on: ubuntu-latest
@@ -23,10 +23,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Compile test
-        run: javac -cp "Projects/P1/tests/junit-4.10.jar:Projects/P1/src/:Projects/P1/tests/" src/*.java tests/*.java
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
         
       - name: Run Test
-        run: java -cp "Projects/P1/tests/junit-4.10.jar:Projects/P1/src/:Projects/P1/tests/" org.junit.runner.JUnitCore TestPacManValidMoves
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestPacManValidMoves
         
   testGvalidMoves:
     runs-on: ubuntu-latest
@@ -36,10 +36,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Compile test
-        run: javac -cp "Projects/P1/tests/junit-4.10.jar:Projects/P1/src/:Projects/P1/tests/" src/*.java tests/*.java
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
         
       - name: Run Test
-        run: java -cp "Projects/P1/tests/junit-4.10.jar:Projects/P1/src/:Projects/P1/tests/" org.junit.runner.JUnitCore TestGhostValidMoves
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestGhostValidMoves
         
   testMapMove:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Compile test
-        run: javac -cp "Projects/P1/tests/junit-4.10.jar:Projects/P1/src/:Projects/P1/tests/" src/*.java tests/*.java
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
         
       - name: Run Test
-        run: java -cp "Projects/P1/tests/junit-4.10.jar:Projects/P1/src/:Projects/P1/tests/" org.junit.runner.JUnitCore TestMapMove
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestMapMove
