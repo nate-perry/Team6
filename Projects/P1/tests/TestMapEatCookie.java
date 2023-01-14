@@ -1,4 +1,7 @@
 import java.io.*;
+
+import javax.swing.JComponent;
+
 import junit.framework.*;
 
 public class TestMapEatCookie extends TestCase {
@@ -13,7 +16,6 @@ public class TestMapEatCookie extends TestCase {
 	    
 		assertTrue(eatCookies != null); 
 
-       n
 		assertFalse(map.getLoc(new Location(3,3)).contains(Map.Type.COOKIE));
   }
 }
