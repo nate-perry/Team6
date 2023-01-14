@@ -92,3 +92,81 @@ jobs:
         
       - name: Run Test
         run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestConsume
+        
+  testPacmanMove:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestPacmanMove
+  
+  testGhostMove:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestGhostMove
+  
+  testMapGetLoc:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestMapGetLoc
+
+ testIsGhostInRange:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestIsGhostInRange
+
+testIsPacmanInRange:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestIsPacmanInRange
+
+testMapEatCookie:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestMapEatCookie

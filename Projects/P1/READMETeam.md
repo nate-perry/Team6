@@ -19,7 +19,7 @@ insert here
 
 get_valid_moves(): 
 
-Function: This function returns an array list with the valid coordinates that a given pacman can move. We decided to move a pacman if the spaces available aren't walls or ghosts. If a space includes a wall or a ghost it is not included in the list of available coordinates. 
+Function: This function returns an array list with the valid coordinates that a given pacman can move. We decided to move a pacman if the spaces available aren't walls or ghosts. If a space includes a wall or a ghost it is not included in the list of available coordinates. Returns an arrayList.
 
 Test: To test this we simply inputted a map and a pacman with some walls. We made the map so we could determine where the pacman, and where the walls, were in the map. This allowed us to check that specific coordinates come back when running the function.
 
