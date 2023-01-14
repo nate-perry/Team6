@@ -53,3 +53,42 @@ jobs:
         
       - name: Run Test
         run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestMapMove
+
+  testGhostAttack:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestAttack
+        
+  testMapAttack:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestMapAttack
+        
+  testConsume:
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile test
+        run: javac -cp "tests/junit-4.10.jar:src/:tests/" Projects/P1/src/*.java Projects/P1/tests/*.java
+        
+      - name: Run Test
+        run: java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore Projects/P1/TestConsume

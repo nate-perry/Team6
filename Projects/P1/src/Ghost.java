@@ -48,7 +48,7 @@ public class Ghost {
       possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
     } 
 
-    return possibleMoves;
+    return new ArrayList<Location>();
   }
 
   public boolean move() {
@@ -79,7 +79,7 @@ public class Ghost {
   }
 
   public boolean attack() {
-    if (is_pacman_in_range()) {
+    if (!is_pacman_in_range()) {
       return this.myMap.attack(this.myName);
     }
     return false;

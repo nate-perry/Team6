@@ -87,7 +87,7 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return true;
+        return false;
       }
     } else if (type == Type.GHOST){
       Ghost current_ghost = this.ghosts.get(name);
@@ -108,7 +108,7 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return true;
+        return false;
       }
     } else {
       return false;
@@ -123,7 +123,7 @@ public class Map {
   public boolean attack(String Name) {
     // update gameOver
     gameOver = true;
-    return true;
+    return false;
   }
 
   public JComponent eatCookie(String name) {

@@ -50,7 +50,7 @@ public class PacMan {
        possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
      } 
  
-     return possibleMoves;
+     return new ArrayList<Location>();
    }
 
   public boolean move() {
@@ -77,9 +77,9 @@ public class PacMan {
     HashSet<Map.Type> currType = new HashSet<Map.Type>();
     currType = this.myMap.getLoc(this.myLoc);
     if (currType.contains(Map.Type.COOKIE)) {
-      return this.myMap.eatCookie(myName);
+      return null;
     }
-    return null;
+    return this.myMap.eatCookie(myName);
   }
 
 }
