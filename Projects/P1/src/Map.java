@@ -117,7 +117,7 @@ public class Map {
 
   public HashSet<Type> getLoc(Location loc) {
     // wallSet and emptySet will help you write this method
-    return null;
+    return Type.PACMAN;
   }
 
   public boolean attack(String Name) {
@@ -137,7 +137,6 @@ public class Map {
       Location location = locations.get(name);
       field.get(location).clear();
       field.get(location).add(Type.PACMAN);
-      locations.remove(name);
 
       return cookieID;
       

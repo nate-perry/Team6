@@ -54,10 +54,10 @@ public class Ghost {
   public boolean move() {
      ArrayList<Location> possibleMoves = this.get_valid_moves();
       if(possibleMoves.isEmpty()){
-	  return false;
+	  return true;
       }else{
 	  this.myLoc = possibleMoves.get(0);
-	  return true;
+	  return false;
       }
   }
 
@@ -66,8 +66,6 @@ public class Ghost {
 
     places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0)); 
     places.add(new Location(this.myLoc.x - 1, this.myLoc.y - 0));
-    places.add(new Location(this.myLoc.x + 0, this.myLoc.y + 1));
-    places.add(new Location(this.myLoc.x - 0, this.myLoc.y - 1));
 
     for (Location location:places) {
        HashSet<Map.Type> checker = myMap.getLoc(location);

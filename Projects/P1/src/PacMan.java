@@ -54,7 +54,11 @@ public class PacMan {
    }
 
   public boolean move() {
-    return false;
+	  if(this.get_valid_moves().isEmpty()){
+		  return true;
+	  }else{
+		  return false;
+	  }
   }
 
   public boolean is_ghost_in_range() {
@@ -62,8 +66,6 @@ public class PacMan {
     
     places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0)); 
     places.add(new Location(this.myLoc.x - 1, this.myLoc.y - 0));
-    places.add(new Location(this.myLoc.x + 0, this.myLoc.y + 1));
-    places.add(new Location(this.myLoc.x - 0, this.myLoc.y - 1));
 
     for (Location location:places) {
        HashSet<Map.Type> checker = myMap.getLoc(location);
