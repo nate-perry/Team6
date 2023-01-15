@@ -123,7 +123,7 @@ public class Map {
   public boolean attack(String Name) {
     // update gameOver
     gameOver = true;
-    return false;
+    return gameOver;
   }
 
   public JComponent eatCookie(String name) {
