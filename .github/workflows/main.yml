@@ -2,7 +2,7 @@ name: PacManWorkflow
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main", "fix-FernandoGV667"]
 
 jobs:
   compile:
