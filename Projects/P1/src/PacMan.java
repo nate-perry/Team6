@@ -55,9 +55,9 @@ public class PacMan {
 
   public boolean move() {
 	  if(this.get_valid_moves().isEmpty()){
-		  return true;
-	  }else{
 		  return false;
+	  }else{
+		  return true;
 	  }
   }
 
