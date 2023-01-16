@@ -88,7 +88,7 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return false;
+        return true;
       }
     } else if (type == Type.GHOST) {
       Ghost current_ghost = this.ghosts.get(name);
@@ -109,7 +109,8 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return false;
+        return true;
+
       }
     } else {
       return false;
@@ -118,6 +119,7 @@ public class Map {
 
   public HashSet<Type> getLoc(Location loc) {
     // wallSet and emptySet will help you write this method
+    // return Type.PACMAN;
     if (field.get(loc) == null) {
       return emptySet;
     } else if (loc.y < 0 || loc.x < 0 || loc.x > dim || loc.y > dim) {
@@ -130,7 +132,7 @@ public class Map {
   public boolean attack(String Name) {
     // update gameOver
     gameOver = true;
-    return false;
+    return gameOver;
   }
 
   public JComponent eatCookie(String name) {
