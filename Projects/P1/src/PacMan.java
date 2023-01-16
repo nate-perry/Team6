@@ -50,15 +50,17 @@ public class PacMan {
        possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
      } 
  
-     return new ArrayList<Location>();
+     return possibleMoves;
    }
 
   public boolean move() {
-	  if(this.get_valid_moves().isEmpty()){
-		  return true;
-	  }else{
-		  return false;
-	  }
+	ArrayList<Location> possibleMoves = this.get_valid_moves();
+      	if(possibleMoves.isEmpty()){
+	  return false;
+      	} else {
+	  this.myLoc = possibleMoves.get(0);
+	  return true;
+      	}
   }
 
   public boolean is_ghost_in_range() {

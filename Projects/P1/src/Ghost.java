@@ -48,16 +48,16 @@ public class Ghost {
       possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
     } 
 
-    return new ArrayList<Location>();
+    return possibleMoves;
   }
 
   public boolean move() {
      ArrayList<Location> possibleMoves = this.get_valid_moves();
       if(possibleMoves.isEmpty()){
-	  return true;
+	  return false;
       }else{
 	  this.myLoc = possibleMoves.get(0);
-	  return false;
+	  return true;
       }
   }
 
