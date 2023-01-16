@@ -16,6 +16,7 @@ public class PacMan {
   }
 
   public ArrayList<Location> get_valid_moves() {
+
     // We just don't want to move through other walls
 
     ArrayList<Location> possibleMoves = new ArrayList<Location>(); // Return object
@@ -54,11 +55,13 @@ public class PacMan {
   }
 
   public boolean move() {
-    if (this.get_valid_moves().isEmpty()) {
-      return true;
-    } else {
-      return false;
-    }
+	ArrayList<Location> possibleMoves = this.get_valid_moves();
+      	if(possibleMoves.isEmpty()){
+	  return false;
+      	} else {
+	  this.myLoc = possibleMoves.get(0);
+	  return true;
+      	}
   }
 
   public boolean is_ghost_in_range() {

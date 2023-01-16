@@ -51,16 +51,16 @@ public class Ghost {
     return possibleMoves;
   }
 
-  public boolean move() {
-    ArrayList<Location> possibleMoves = this.get_valid_moves();
-    if (possibleMoves.isEmpty()) {
-      return true;
-    } else {
-      this.myLoc = possibleMoves.get(0);
-      return false;
-    }
+public boolean move() {
+     ArrayList<Location> possibleMoves = this.get_valid_moves();
+      if(possibleMoves.isEmpty()){
+	  return false;
+      }else{
+	  this.myLoc = possibleMoves.get(0);
+	  return true;
+      }
   }
-
+  
   public boolean is_pacman_in_range() {
     ArrayList<Location> places = new ArrayList<Location>();
 

@@ -117,15 +117,14 @@ public class Map {
     }
   }
 
-  public HashSet<Type> getLoc(Location loc) {
+ public HashSet<Type> getLoc(Location loc) {
     // wallSet and emptySet will help you write this method
-    // return Type.PACMAN;
     if (field.get(loc) == null) {
-      return emptySet;
-    } else if (loc.y < 0 || loc.x < 0 || loc.x > dim || loc.y > dim) {
-      return wallSet;
+	return emptySet;
+    } else if (loc.y < 0 || loc.x < 0 || loc.x > dim || loc.y > dim){
+    	return wallSet;
     } else {
-      return field.get(loc);
+	return field.get(loc);
     }
   }
 
