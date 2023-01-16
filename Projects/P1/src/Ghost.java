@@ -48,7 +48,7 @@ public class Ghost {
       possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
     } 
 
-    return new ArrayList<Location>();
+    return possibleMoves;
   }
 
   public boolean move() {
