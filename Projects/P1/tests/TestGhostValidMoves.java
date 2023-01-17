@@ -15,8 +15,5 @@ public class TestGhostValidMoves extends TestCase {
 
     assertTrue(ghost.get_valid_moves().contains(new Location(2, 3)));
 
-    // Add tests as code is pushed in
-
-    // assertTrue(ghost.get_valid_moves().isEmpty());
   }
 }

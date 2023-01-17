@@ -16,84 +16,76 @@ public class PacMan {
   }
 
   public ArrayList<Location> get_valid_moves() {
+      // We just don't want to move through other walls
 
-    // We just don't want to move through other walls
+      ArrayList<Location> possibleMoves = new ArrayList<Location>(); // Return object
 
-    ArrayList<Location> possibleMoves = new ArrayList<Location>(); // Return object
+      HashSet<Map.Type> currType = new HashSet<Map.Type>();
 
-    HashSet<Map.Type> currType = new HashSet<Map.Type>();
+      currType = this.myMap.getLoc(new Location(this.myLoc.x, this.myLoc.y + 1)); // Up one
 
-    currType = this.myMap.getLoc(new Location(this.myLoc.x, this.myLoc.y + 1)); // Up one
+      if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
 
-    if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
+          possibleMoves.add(new Location(this.myLoc.x, this.myLoc.y + 1));
+      }
 
-      possibleMoves.add(new Location(this.myLoc.x, this.myLoc.y + 1));
-    }
+      currType = this.myMap.getLoc(new Location(this.myLoc.x, this.myLoc.y - 1)); // Down one
 
-    currType = this.myMap.getLoc(new Location(this.myLoc.x, this.myLoc.y - 1)); // Down one
+      if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
 
-    if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
+          possibleMoves.add(new Location(this.myLoc.x, this.myLoc.y - 1));
+      }
 
-      possibleMoves.add(new Location(this.myLoc.x, this.myLoc.y - 1));
-    }
+      currType = this.myMap.getLoc(new Location(this.myLoc.x + 1, this.myLoc.y)); // Right one
 
-    currType = this.myMap.getLoc(new Location(this.myLoc.x + 1, this.myLoc.y)); // Right one
+      if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
 
-    if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
+          possibleMoves.add(new Location(this.myLoc.x + 1, this.myLoc.y));
+      }
 
-      possibleMoves.add(new Location(this.myLoc.x + 1, this.myLoc.y));
-    }
+      currType = this.myMap.getLoc(new Location(this.myLoc.x - 1, this.myLoc.y)); // Left one
 
-    currType = this.myMap.getLoc(new Location(this.myLoc.x - 1, this.myLoc.y)); // Left one
+      if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
 
-    if (!(currType == null || (currType.contains(Map.Type.WALL) || currType.contains((Map.Type.GHOST))))) {
+          possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
+      }
 
-      possibleMoves.add(new Location(this.myLoc.x - 1, this.myLoc.y));
-    }
-
-    return possibleMoves;
-  }
+      return possibleMoves;
+   }
 
   public boolean move() {
 	ArrayList<Location> possibleMoves = this.get_valid_moves();
-      	if(possibleMoves.isEmpty()){
+    if (possibleMoves.isEmpty()){
 	  return false;
-      	} else {
+    } else {
 	  this.myLoc = possibleMoves.get(0);
 	  return true;
-      	}
+    }
   }
 
   public boolean is_ghost_in_range() {
     ArrayList<Location> places = new ArrayList<Location>();
-
     
-    places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0)); 
+    places.add(new Location(this.myLoc.x + 1, this.myLoc.y));
+    places.add(new Location(this.myLoc.x - 1, this.myLoc.y));
     places.add(new Location(this.myLoc.x, this.myLoc.y + 1));
     places.add(new Location(this.myLoc.x, this.myLoc.y - 1));
 
-
-    places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0));
-    places.add(new Location(this.myLoc.x - 1, this.myLoc.y - 0));
-
-
-    for (Location location : places) {
-      HashSet<Map.Type> checker = myMap.getLoc(location);
-      if (checker.contains(Map.Type.GHOST)) {
-        return true;
-      }
+    for (Location location:places) {
+       HashSet<Map.Type> checker = myMap.getLoc(location);
+       if (checker.contains(Map.Type.GHOST)) {
+	return true;
+       }
     }
-    return false;
+   return false; 
   }
-
   public JComponent consume() {
-    HashSet<Map.Type> currType = new HashSet<Map.Type>();
-    currType = myMap.getLoc(myLoc);
+    HashSet<Map.Type> currType;
+    currType = this.myMap.getLoc(this.myLoc);
     if (currType.contains(Map.Type.COOKIE)) {
-      return myMap.eatCookie(myName);
-    }else{
-    return null;
+      return this.myMap.eatCookie(myName);
     }
+    return null;
   }
 
 }
