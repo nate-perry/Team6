@@ -87,7 +87,7 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return false;
+        return true;
       }
     } else if (type == Type.GHOST){
       Ghost current_ghost = this.ghosts.get(name);
@@ -108,7 +108,7 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return false;
+        return true;
       }
     } else {
       return false;
@@ -137,15 +137,14 @@ public class Map {
     // the id for a cookie at (10, 1) is tok_x10_y1
       JComponent cookieID = components.remove(name);
       if (cookieID == null)
-	  return null;
+	    return null;
 
       cookies++;
       Location location = locations.get(name);
       field.get(location).clear();
       field.get(location).add(Type.PACMAN);
+      locations.remove(name);
 
       return cookieID;
-      
-      
   }
 }

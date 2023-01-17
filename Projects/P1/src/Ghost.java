@@ -54,18 +54,20 @@ public class Ghost {
   public boolean move() {
      ArrayList<Location> possibleMoves = this.get_valid_moves();
       if(possibleMoves.isEmpty()){
-	  return false;
+	    return false;
       }else{
-	  this.myLoc = possibleMoves.get(0);
-	  return true;
+	    this.myLoc = possibleMoves.get(0);
+	    return true;
       }
   }
 
   public boolean is_pacman_in_range() {
     ArrayList<Location> places = new ArrayList<Location>();
 
-    places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0)); 
-    places.add(new Location(this.myLoc.x - 1, this.myLoc.y - 0));
+    places.add(new Location(this.myLoc.x + 1, this.myLoc.y));
+    places.add(new Location(this.myLoc.x - 1, this.myLoc.y));
+    places.add(new Location(this.myLoc.x, this.myLoc.y + 1));
+    places.add(new Location(this.myLoc.x, this.myLoc.y - 1));
 
     for (Location location:places) {
        HashSet<Map.Type> checker = myMap.getLoc(location);
@@ -77,7 +79,7 @@ public class Ghost {
   }
 
   public boolean attack() {
-    if (!is_pacman_in_range()) {
+    if (is_pacman_in_range()) {
       return this.myMap.attack(this.myName);
     }
     return false;

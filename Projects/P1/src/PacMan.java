@@ -55,19 +55,21 @@ public class PacMan {
 
   public boolean move() {
 	ArrayList<Location> possibleMoves = this.get_valid_moves();
-      	if(possibleMoves.isEmpty()){
+    if (possibleMoves.isEmpty()){
 	  return false;
-      	} else {
+    } else {
 	  this.myLoc = possibleMoves.get(0);
 	  return true;
-      	}
+    }
   }
 
   public boolean is_ghost_in_range() {
     ArrayList<Location> places = new ArrayList<Location>();
     
-    places.add(new Location(this.myLoc.x + 1, this.myLoc.y + 0)); 
-    places.add(new Location(this.myLoc.x - 1, this.myLoc.y - 0));
+    places.add(new Location(this.myLoc.x + 1, this.myLoc.y));
+    places.add(new Location(this.myLoc.x - 1, this.myLoc.y));
+    places.add(new Location(this.myLoc.x, this.myLoc.y + 1));
+    places.add(new Location(this.myLoc.x, this.myLoc.y - 1));
 
     for (Location location:places) {
        HashSet<Map.Type> checker = myMap.getLoc(location);
@@ -81,9 +83,9 @@ public class PacMan {
     HashSet<Map.Type> currType = new HashSet<Map.Type>();
     currType = this.myMap.getLoc(this.myLoc);
     if (currType.contains(Map.Type.COOKIE)) {
-      return null;
+      return this.myMap.eatCookie(myName);
     }
-    return this.myMap.eatCookie(myName);
+    return null;
   }
 
 }
