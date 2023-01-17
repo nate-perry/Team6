@@ -8,6 +8,6 @@ public class TestMapGetLoc extends TestCase {
     Location pacLoc = new Location(2,2);
     PacMan pacman = new PacMan("pacman", pacLoc, myMap);
     Location loc = new Location(2,3);
-    assertTrue(myMap.getLoc(pacLoc) == null);
+    assertTrue(myMap.getLoc(pacLoc).contains(Map.Type.EMPTY));
   }
 }

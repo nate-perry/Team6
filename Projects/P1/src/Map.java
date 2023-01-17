@@ -117,7 +117,13 @@ public class Map {
 
   public HashSet<Type> getLoc(Location loc) {
     // wallSet and emptySet will help you write this method
-    return field.get(loc);
+    if (field.get(loc) == null) {
+      return emptySet;
+    } else if (loc.y < 0 || loc.x < 0 || loc.x > dim || loc.y > dim){
+      return wallSet;
+    } else {
+      return field.get(loc);
+    }
   }
 
   public boolean attack(String Name) {
@@ -129,16 +135,21 @@ public class Map {
   public JComponent eatCookie(String name) {
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
-      JComponent cookieID = components.remove(name);
-      if (cookieID == null)
-	    return null;
+    Location location = locations.get(name);
+    if (field.get(location)!=null){
+      field.get(location).remove(Map.Type.COOKIE);
+    } else {
+      return null;
+    }
 
-      cookies++;
-      Location location = locations.get(name);
-      field.get(location).clear();
-      field.get(location).add(Type.PACMAN);
-      locations.remove(name);
+    String cookieName = "tok_x" + location.x + "_y" + location.y;
+    JComponent cookieID = components.remove(cookieName);
+    if (cookieID == null){
+      return null;
+    }
+    cookies++;
+    locations.remove(cookieName);
 
-      return cookieID;
+    return cookieID;
   }
 }
