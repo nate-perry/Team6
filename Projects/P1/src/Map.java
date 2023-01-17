@@ -122,14 +122,6 @@ public class Map {
 
     return field.get(loc);
 
-    if (field.get(loc) == null) {
-	return emptySet;
-    } else if (loc.y < 0 || loc.x < 0 || loc.x > dim || loc.y > dim){
-    	return wallSet;
-    } else {
-	return field.get(loc);
-    }
-
   }
 
   public boolean attack(String Name) {
