@@ -78,8 +78,8 @@ public boolean move() {
 
   public boolean attack() {
     if (!is_pacman_in_range()) {
-      return this.myMap.attack(this.myName);
+      return false;
     }
-    return false;
+    return this.myMap.attack(this.myName);
   }
 }
