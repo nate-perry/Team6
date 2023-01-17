@@ -121,6 +121,7 @@ public class Map {
     // wallSet and emptySet will help you write this method
 
     return field.get(loc);
+
   }
 
   public boolean attack(String Name) {
