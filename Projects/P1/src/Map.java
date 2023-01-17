@@ -44,7 +44,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -60,13 +61,13 @@ public class Map {
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
 
-    //Given a name, location, and type, move the object and update
+    // Given a name, location, and type, move the object and update
 
-    JComponent component = this.components.get(name); //Simply a JComponent
+    JComponent component = this.components.get(name); // Simply a JComponent
 
     ArrayList<Location> valid_locations;
 
-    //If we have a pacman, then I need a pacman
+    // If we have a pacman, then I need a pacman
 
     if (type == Type.PACMAN) {
       PacMan current_pacman = this.pacmans.get(name);
@@ -87,9 +88,9 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return false;
+        return true;
       }
-    } else if (type == Type.GHOST){
+    } else if (type == Type.GHOST) {
       Ghost current_ghost = this.ghosts.get(name);
 
       if (current_ghost == null) {
@@ -108,38 +109,48 @@ public class Map {
         if (component != null) {
           component.setLocation(valid_locations.get(0).x, valid_locations.get(0).y);
         }
-        return false;
+        return true;
+
       }
     } else {
       return false;
     }
   }
 
-  public HashSet<Type> getLoc(Location loc) {
+ public HashSet<Type> getLoc(Location loc) {
     // wallSet and emptySet will help you write this method
+
     return field.get(loc);
+
+    if (field.get(loc) == null) {
+	return emptySet;
+    } else if (loc.y < 0 || loc.x < 0 || loc.x > dim || loc.y > dim){
+    	return wallSet;
+    } else {
+	return field.get(loc);
+    }
+
   }
 
   public boolean attack(String Name) {
     // update gameOver
     gameOver = true;
-    return false;
+    return gameOver;
   }
 
   public JComponent eatCookie(String name) {
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
-      JComponent cookieID = components.remove(name);
-      if (cookieID == null)
-	  return null;
+    JComponent cookieID = components.remove(name);
+    if (cookieID == null)
+      return null;
 
-      cookies++;
-      Location location = locations.get(name);
-      field.get(location).clear();
-      field.get(location).add(Type.PACMAN);
+    cookies++;
+    Location location = locations.get(name);
+    field.get(location).clear();
+    field.get(location).add(Type.PACMAN);
 
-      return cookieID;
-      
-      
+    return cookieID;
+
   }
 }
